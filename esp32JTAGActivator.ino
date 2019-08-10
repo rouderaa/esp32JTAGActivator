@@ -34,12 +34,34 @@ GND                       pin 20
 15/A8                     pin 13
 14/A6                     pin 7
 
-Note 1 : Remove the red LED from the board since it is attached to one of
+NOTE 1 : Remove the red LED from the Adafruit board since it is attached to one of
 the lines used by the  JTAG port.
 
 NOTE 2 : Also attach the USB cable to the USB port of the PC.
 It is used to show the Serial port data in your program along with your debugger.
 (You can connect the program Putty to it for example)
+
+NOTE 3 : Set the File->Preferences, field 'Additional Board Manager Urls's' to 'https://dl.espressif.com/dl/package_esp32_index.json' in the Arduino IDE
+
+NOTE 4 : Select the Tools->Board type 'ESP32DevModule' in the Arduino IDE
+
+It is also possible to use the 'CJMCU-232H' board instead of the 'ARM-USB-OCD-H' board.
+
+LOLIN D32 board to CJMCU-232H interface board pin mappings
+----------------------------------------------------------
+GND                       GND
+13                        AD0
+12                        AD1
+15                        AD2
+14                        AD3
+
+NOTE 5 : If you use the 'CJMCU-232H' interface board then in the PlatformIO tool (https://platformio.org/), your *.ini file, 
+add this line 'debug_init_break = tbreak setup' for your project in PlatformIO.
+
+NOTE 6 : If you use the Olimex 'ARM-USB-OCD-H' interface then add these lines to your *.ini file in your project in PlatformIO:
+debug_tool = olimex-arm-usb-ocd-h
+upload_protocol = olimex-arm-usb-ocd-h
+
  */
 
 #include "soc/io_mux_reg.h"
